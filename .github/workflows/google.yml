@@ -22,7 +22,7 @@ env:
   GAR_LOCATION: us-central1 # TODO: update region of the Artifact Registry
   GKE_CLUSTER: cluster-1    # TODO: update to cluster name
   GKE_ZONE: us-central1-c   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: helloworld1 # TODO: update to deployment name
+  DEPLOYMENT_NAME: project1  # TODO: update to deployment name
   REPOSITORY: samples # TODO: update to Artifact Registry docker repository
   IMAGE: static-site4
 
@@ -97,8 +97,8 @@ jobs:
       run: |-
         # replacing the image name in the k8s template
         #./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=us-central1-docker.pkg.dev/us-central1/samples/static-site1:$GITHUB_SHA
-         kubectl create deployment helloworld_demo1  --image=us-central1-docker.pkg.dev/dark-sensor-386805/samples/static-site4:$GITHUB_SHA
-         kubectl expose deployment helloworld_demo1  --type=LoadBalancer --port=8006
+         kubectl create deployment project1  --image=us-central1-docker.pkg.dev/dark-sensor-386805/samples/static-site4:$GITHUB_SHA
+         kubectl expose deployment project1  --type=LoadBalancer --port=8006
          kubectl get services -o wide
          kubectl get pods
    
